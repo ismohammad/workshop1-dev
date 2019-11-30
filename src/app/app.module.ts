@@ -11,7 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {AppRouting} from './app.routing';
 import { HomeComponent } from './home/home.component'
 
-@NgModule({
+@NgModule({ 
   imports: [
     AppRouting,
     BrowserModule,
