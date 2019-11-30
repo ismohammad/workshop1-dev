@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Inject } from '@angular/core';
+
 import {
   FormBuilder,
   FormGroup,
@@ -12,16 +14,22 @@ import {
   templateUrl: "./user.component.html",
   styleUrls: ["./user.component.css"]
 })
+
+
 export class UserComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl = "dashboard";
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  @Inject(
+  FormBuilder
+)  private formBuilder: FormBuilder,
+   @Inject(ActivatedRoute) private route: ActivatedRoute,
+    @Inject(Router) private router: Router,
+	
+   ) {
+    };
   ngOnInit() {
     this.loginForm = new FormGroup({
       username: new FormControl(),
