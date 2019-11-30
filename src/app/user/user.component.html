@@ -1,0 +1,48 @@
+<!-- Default form login -->
+<form class="text-center border border-light p-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+	<p class="h4 mb-4">Sign in App</p>
+
+	<!-- Email -->
+	<div class="form-group">
+		<input type="text" formControlName="username" placeholder="Username" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+
+		<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+			<div *ngIf="f.username.errors.required">Username is required</div>
+		</div>
+	</div>
+	<!-- Password -->
+	<div class="form-group">
+		<input type="password" formControlName="password" placeholder="Password" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+		<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+			<div *ngIf="f.password.errors.required">Password is required</div>
+		</div>
+	</div>
+	<!--
+	<div class="d-flex ">
+		<div>
+			<mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+		</div>
+		<div>
+			<p>
+				<a href="">Forgot password?</a>
+			</p>
+		</div>
+	</div>
+  -->
+
+	<!-- Sign in button -->
+	<div class="form-group">
+		<button   mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+
+	</div>
+
+	<!-- 
+	<p>Not a member?
+		<a href="">Register</a>
+	</p>
+-->
+</form>
+<!-- Default form login -->
