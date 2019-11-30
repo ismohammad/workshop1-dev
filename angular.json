@@ -55,16 +55,16 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "angular.io-example:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "angular.io-example:build:production"
-            }
-          }
-        },
+      "builder": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "angular.io-example:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "angular.io-example:build:production"
+        }
+      }
+    },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
