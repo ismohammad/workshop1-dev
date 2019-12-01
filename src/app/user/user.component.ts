@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Inject } from "@angular/core";
-import { UserService } from "./user.service";
+import { UserService } from "../user.service";
 import { first } from "rxjs/operators";
 import { UserInfo } from "./model/user.info";
 

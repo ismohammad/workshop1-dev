@@ -10,7 +10,8 @@ import { MDBBootstrapModule } from "angular-bootstrap-md";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AppRouting } from "./app.routing";
 import { HomeComponent } from "./home/home.component";
-import { UserService } from "./userservice";
+import { UserService } from "./user.service";
+import { HttpClientModule  } from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { UserService } from "./userservice";
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MDBBootstrapModule.forRoot()
   ],
   declarations: [
