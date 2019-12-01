@@ -1,17 +1,18 @@
-import { NgModule , CUSTOM_ELEMENTS_SCHEMA  } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
-import { ReactiveFormsModule,FormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppComponent } from "./app.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
 import { UserComponent } from "./user/user.component";
 import { MDBBootstrapModule } from "angular-bootstrap-md";
-import { DashboardComponent } from './dashboard/dashboard.component';
-import {AppRouting} from './app.routing';
-import { HomeComponent } from './home/home.component'
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { AppRouting } from "./app.routing";
+import { HomeComponent } from "./home/home.component";
+import { UserService } from "./userservice";
 
-@NgModule({ 
+@NgModule({
   imports: [
     AppRouting,
     BrowserModule,
@@ -20,9 +21,16 @@ import { HomeComponent } from './home/home.component'
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot()
   ],
-  declarations: [AppComponent, TopBarComponent, UserComponent, DashboardComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    TopBarComponent,
+    UserComponent,
+    DashboardComponent,
+    HomeComponent
+  ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [UserService]
 })
 export class AppModule {}
 

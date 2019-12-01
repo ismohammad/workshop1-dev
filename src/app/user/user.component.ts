@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Inject } from '@angular/core';
+import { Inject } from "@angular/core";
+import { UserService } from "./user.service";
+import { first } from "rxjs/operators";
+import { UserInfo } from "./model/user.info";
 
 import {
   FormBuilder,
@@ -14,22 +17,19 @@ import {
   templateUrl: "./user.component.html",
   styleUrls: ["./user.component.css"]
 })
-
-
 export class UserComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl = "dashboard";
+  users: UserInfo[] = [];
 
   constructor(
-  @Inject(
-  FormBuilder
-)  private formBuilder: FormBuilder,
-   @Inject(ActivatedRoute) private route: ActivatedRoute,
+    @Inject(FormBuilder)
+    private formBuilder: FormBuilder,
+    @Inject(ActivatedRoute) private route: ActivatedRoute,
     @Inject(Router) private router: Router,
-	
-   ) {
-    };
+    @Inject(UserService) private userService: UserService
+  ) {}
   ngOnInit() {
     this.loginForm = new FormGroup({
       username: new FormControl(),
@@ -55,5 +55,14 @@ export class UserComponent implements OnInit {
     console.log("This is returnUrl ", this.returnUrl);
 
     this.router.navigate([this.returnUrl]);
+  }
+  checkUsername(username: string) {
+    console.log("this is usercomponet call ", username);
+    this.userService
+      .checkUsername(username)
+      .pipe(first())
+      .subscribe(users => {
+        this.users = users;
+      });
   }
 }
