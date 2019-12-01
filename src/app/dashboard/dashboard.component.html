@@ -1,6 +1,11 @@
 <p>
 	dashboard works!
 </p>
-<a (click)="checkUsername('clickcio.test2016@gmail.com')" class="btn btn-primary">
+<!--
+<a  (click)="checkusername('ishaqtasleem@gmail.com')" class="btn btn-primary">
 	Back
 </a>
+-->
+
+
+<a [routerLink]="['/checkusername', 5]">Home</a>

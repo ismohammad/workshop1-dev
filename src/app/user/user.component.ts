@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Inject } from "@angular/core";
-import { UserService } from "../user.service";
 import { first } from "rxjs/operators";
 import { UserInfo } from "./model/user.info";
+import { UserService } from "../user.service";
 
 import {
   FormBuilder,
@@ -39,7 +39,8 @@ export class UserComponent implements OnInit {
       username: ["", Validators.required],
       password: ["", Validators.required]
     });
-    console.log("This is u#####sername ");
+    console.log("This is u#####sername return URL ",this.returnUrl);
+    this.checkusername();
   }
   get f() {
     return this.loginForm.controls;
@@ -56,10 +57,12 @@ export class UserComponent implements OnInit {
 
     this.router.navigate([this.returnUrl]);
   }
-  checkUsername(username: string) {
+
+  checkusername(): void {
+    const username = +this.route.snapshot.paramMap.get('username');
     console.log("this is usercomponet call ", username);
     this.userService
-      .checkUsername(username)
+      .checkusername(username)
       .pipe(first())
       .subscribe(users => {
         this.users = users;
